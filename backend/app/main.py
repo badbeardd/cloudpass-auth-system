@@ -30,3 +30,6 @@ app.include_router(user_route.router, prefix="/user")
 @app.get("/")
 def root():
     return {"message": "CloudPass Auth Backend is running"}
+@app.post("/ping")
+def ping():
+    return {"ping": "pong"}
