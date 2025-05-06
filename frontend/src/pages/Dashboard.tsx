@@ -5,20 +5,16 @@ const Dashboard: React.FC = () => {
   const [email, setEmail] = useState<string | null>(null);
   const navigate = useNavigate();
 
-  // ✅ Store email and token from URL (first-time login)
+  // Store email and token from URL on first login
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
     const emailFromURL = params.get('email');
     const tokenFromURL = params.get('token');
-    if (emailFromURL) {
-      localStorage.setItem('userEmail', emailFromURL);
-    }
-    if (tokenFromURL) {
-      localStorage.setItem('token', tokenFromURL);
-    }
+    if (emailFromURL) localStorage.setItem('userEmail', emailFromURL);
+    if (tokenFromURL) localStorage.setItem('token', tokenFromURL);
   }, []);
 
-  // ✅ Load email and check login status
+  // Load email and call protected API
   useEffect(() => {
     const storedEmail = localStorage.getItem('userEmail');
     if (!storedEmail) {
@@ -27,10 +23,9 @@ const Dashboard: React.FC = () => {
       setEmail(storedEmail);
     }
 
-    // ✅ Try calling protected API
     const token = localStorage.getItem('token');
     if (token) {
-      fetch('http://localhost:8000/user/profile', {
+      fetch(`${import.meta.env.VITE_API_URL}/user/profile`, {
         method: 'GET',
         headers: {
           Authorization: `Bearer ${token}`,

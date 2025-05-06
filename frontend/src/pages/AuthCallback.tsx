@@ -1,4 +1,3 @@
-// frontend/src/pages/AuthCallback.tsx
 import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
@@ -16,7 +15,7 @@ const AuthCallback: React.FC = () => {
       }
 
       try {
-        const response = await fetch(`http://127.0.0.1:8000/auth/verify?token=${token}`);
+        const response = await fetch(`${import.meta.env.VITE_API_URL}/auth/verify?token=${token}`);
         if (!response.ok) throw new Error('Token verification failed');
 
         const email = new URL(response.url).searchParams.get('email');

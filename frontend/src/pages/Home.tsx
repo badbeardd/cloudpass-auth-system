@@ -1,4 +1,3 @@
-// frontend/src/pages/Home.tsx
 import { useState } from 'react';
 import axios from 'axios';
 import OAuthButtons from '../components/OAuthButtons';
@@ -9,22 +8,21 @@ const Home = () => {
 
   const handleSendLink = async () => {
     console.log("Send button clicked");
-  
+
     try {
-      const res = await axios.post('http://127.0.0.1:8000/auth/magic-link', {
-        email: email,
-      });
+      const res = await axios.post(
+        `${import.meta.env.VITE_API_URL}/auth/magic-link`,
+        { email }
+      );
       console.log("Magic link sent:", res.data);
       setMessage('✅ Magic link sent! Check your inbox.');
     } catch (err: any) {
       console.error("Error sending magic link:", err);
       setMessage('❌ Failed to send magic link.');
     } finally {
-      console.log("Request finished"); // ✅ Add this
+      console.log("Request finished");
     }
   };
-  
-  
 
   return (
     <div className="min-h-screen flex flex-col items-center justify-center gap-4">
@@ -45,7 +43,6 @@ const Home = () => {
         Send Magic Link
       </button>
 
-      {/* OAuth GitHub Login */}
       <OAuthButtons />
 
       {message && <p className="text-sm mt-2">{message}</p>}

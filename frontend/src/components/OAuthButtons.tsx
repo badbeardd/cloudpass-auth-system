@@ -3,7 +3,7 @@ import React from 'react';
 const OAuthButtons: React.FC = () => {
   const handleGitHubLogin = async () => {
     try {
-      const res = await fetch('http://localhost:8000/auth/oauth/github');
+      const res = await fetch(`${import.meta.env.VITE_API_URL}/auth/oauth/github`);
       const data = await res.json();
       if (data.url) {
         window.location.href = data.url; // Redirect to GitHub login
