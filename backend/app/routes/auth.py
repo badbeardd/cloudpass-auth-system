@@ -12,6 +12,8 @@ from app.services.user_service import get_or_create_user
 # from ..services.user_service import get_or_create_user
 # from ..database import SessionLocal
 from fastapi import APIRouter, Request, HTTPException
+import os
+FRONTEND_URL = os.getenv("FRONTEND_URL", "http://localhost:5173")
 
 router = APIRouter()
 
@@ -42,7 +44,8 @@ def verify_magic_link(token: str, request: Request):
         get_or_create_user(db, email)
         # Redirect to frontend (correct port)
         #return RedirectResponse(url=f"http://localhost:5173/dashboard?email={email}")
-        return RedirectResponse(url=f"http://localhost:5173/dashboard?email={email}&token={token}")
+        #return RedirectResponse(url=f"http://localhost:5173/dashboard?email={email}&token={token}")
+        return RedirectResponse(url=f"{FRONTEND_URL}/dashboard?email={email}&token={token}")
     except Exception as e:
         print(f"❌ Verification failed: {e}")
         raise HTTPException(status_code=401, detail="Invalid or expired token")
