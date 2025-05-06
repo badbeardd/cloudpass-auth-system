@@ -11,8 +11,8 @@ from app.services.user_service import get_or_create_user
 # from ..services.email_service import send_magic_link_email
 # from ..services.user_service import get_or_create_user
 # from ..database import SessionLocal
-from fastapi import APIRouter, Request, HTTPException
 import os
+
 FRONTEND_URL = os.getenv("FRONTEND_URL", "http://localhost:5173")
 
 router = APIRouter()
