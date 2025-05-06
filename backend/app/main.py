@@ -1,10 +1,12 @@
 # backend/app/main.py
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from app.routes import auth, user_route
-from app.database import Base, engine
-from app.models import user
-
+# from app.routes import auth, user_route
+# from app.database import Base, engine
+# from app.models import user
+from routes import auth, user_route
+from database import Base, engine
+from models import user
 Base.metadata.create_all(bind=engine)
 # Create FastAPI app
 app = FastAPI()

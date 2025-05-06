@@ -7,6 +7,8 @@ Sure — here are the commands for both backend and frontend:
 If you're using **Uvicorn**:
 
 ```bash
+cd backend
+source venv/Scripts/activate
 uvicorn app.main:app --reload
 ```
 
