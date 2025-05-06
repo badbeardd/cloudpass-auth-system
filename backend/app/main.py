@@ -17,7 +17,7 @@ app = FastAPI()
 # Enable CORS for frontend
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["https://cloudpass-frontend.onrender.com"],  # your exact frontend URL
+    allow_origins=["https://cloudpass-auth-system.onrender.com"],  # your exact frontend URL
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
