@@ -1,11 +1,16 @@
 from fastapi import APIRouter, Request, HTTPException
 from pydantic import BaseModel
 from fastapi.responses import RedirectResponse
-from app.utils.token_utils import generate_login_token, verify_login_token
-from app.utils.url_utils import generate_magic_link
-from app.services.email_service import send_magic_link_email
-from app.database import SessionLocal
-from app.services.user_service import get_or_create_user
+# from app.utils.token_utils import generate_login_token, verify_login_token
+# from app.utils.url_utils import generate_magic_link
+# from app.services.email_service import send_magic_link_email
+# from app.database import SessionLocal
+# from app.services.user_service import get_or_create_user
+from ..utils.token_utils import generate_login_token, verify_login_token
+from ..utils.url_utils import generate_magic_link
+from ..services.email_service import send_magic_link_email
+from ..services.user_service import get_or_create_user
+from ..database import SessionLocal
 from fastapi import APIRouter, Request, HTTPException
 
 router = APIRouter()
@@ -46,7 +51,7 @@ def verify_magic_link(token: str, request: Request):
 # ✅ GITHUB OAUTH FLOW
 # ========================
 
-from app.services.oauth_service import (
+from ..services.oauth_service import (
     get_github_auth_url,
     exchange_github_code_for_token,
     get_github_user_info
