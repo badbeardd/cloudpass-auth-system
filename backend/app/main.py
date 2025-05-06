@@ -26,3 +26,7 @@ app.add_middleware(
 # Register routers
 app.include_router(auth.router, prefix="/auth")
 app.include_router(user_route.router, prefix="/user")
+
+@app.get("/")
+def root():
+    return {"message": "CloudPass Auth Backend is running"}
