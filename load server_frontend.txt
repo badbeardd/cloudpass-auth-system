@@ -1,0 +1,28 @@
+Sure — here are the commands for both backend and frontend:
+
+---
+
+### 🔁 **Backend Reload (FastAPI)**
+
+If you're using **Uvicorn**:
+
+```bash
+uvicorn app.main:app --reload
+```
+
+> Run this from inside your `backend/` folder.
+
+---
+
+### 🚀 **Frontend Start (Vite + React)**
+
+```bash
+npm install     # Only if you haven't already
+npm run dev
+```
+
+> Run this from inside your `frontend/` folder.
+
+---
+
+Let me know if you want to convert this into Docker or make a dev script!
