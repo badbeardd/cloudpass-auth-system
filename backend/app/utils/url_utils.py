@@ -1,5 +1,7 @@
+import os
 from urllib.parse import urlencode
 
+BACKEND_URL = os.getenv("BACKEND_URL", "http://localhost:8000")
+
 def generate_magic_link(token: str) -> str:
-    base_url = "http://localhost:8000/auth/verify"
-    return f"{base_url}?{urlencode({'token': token})}"
+    return f"{BACKEND_URL}/auth/verify?{urlencode({'token': token})}"
