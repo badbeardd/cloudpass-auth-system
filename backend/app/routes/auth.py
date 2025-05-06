@@ -45,6 +45,7 @@ def verify_magic_link(token: str, request: Request):
         # Redirect to frontend (correct port)
         #return RedirectResponse(url=f"http://localhost:5173/dashboard?email={email}")
         #return RedirectResponse(url=f"http://localhost:5173/dashboard?email={email}&token={token}")
+        print(f"[REDIRECT DEBUG] Redirecting to: {FRONTEND_URL}/dashboard?email={email}&token={token}")
         return RedirectResponse(url=f"{FRONTEND_URL}/dashboard?email={email}&token={token}")
     except Exception as e:
         print(f"❌ Verification failed: {e}")
@@ -83,4 +84,5 @@ def github_callback(code: str):
     get_or_create_user(db, email)
 
     token = generate_login_token(email)
-    return RedirectResponse(f"http://localhost:5173/dashboard?email={email}&token={token}")
+    return RedirectResponse(f"{FRONTEND_URL}/dashboard?email={email}&token={token}")
+
